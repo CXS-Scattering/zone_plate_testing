@@ -6,4 +6,4 @@
 
 *create_zp.py*    - uses the above and creates a zone plate !
 
-Each python code has an associated ipython notebook explaining (and documenting!) how the code works.
+TODO : Each python code has an associated ipython notebook explaining (and documenting!) how the code works.
