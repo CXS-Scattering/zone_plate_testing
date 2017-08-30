@@ -49,7 +49,6 @@ radius = np.zeros(N)
 for i in range(N):
     radius[i] = zone_radius(i,f,wavel)
     if i%2 == 1 :
-        disc1 = c.create_disc(X,Y,step,radius[i],n)
-        disc2 = c.create_disc(X,Y,step,radius[i-1],n)
-        zp = zp + (disc1 - disc2)
+        disc1 = c.create_disc(X,Y,step,radius[i-1],radius[i],n)
+        zp = zp + disc1
     #print(i)
