@@ -4,8 +4,6 @@
 
 *create_disc.py*  - creates a circle on a grid.
 
-*create_ring.py*  - uses the above and creates a disk.
-
 *create_zp.py*    - uses the above and creates a zone plate !
 
 Each python code has an associated ipython notebook explaining (and documenting!) how the code works.
