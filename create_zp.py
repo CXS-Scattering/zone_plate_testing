@@ -95,7 +95,8 @@ for i in range(N):
     if i%2 == 1 :
         r1 = radius[i-1]
         r2 = radius[i]
-        ring = make_ring(X,Y,flag,r1,r2,500)
+        ring = make_quadrant(X,Y,flag,r1,r2,500)
         zp+=ring
 
 zp = repeat_pattern(X,Y,zp)
+np.save('zp.npy',zp)
