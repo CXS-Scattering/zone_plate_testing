@@ -89,7 +89,7 @@ def zone_radius(n,f,wavel):
 
 # In[6]:
 
-def make_quadrant(X,Y,flag,r1,r2,n):
+def make_quadrant(X,Y,flag,r1,r2,step,n):
     z = np.zeros(np.shape(X))
     Z = np.sqrt(X**2+Y**2)
     for l in range(len(flag[0])):
@@ -121,9 +121,7 @@ zp = np.zeros((grid_size,grid_size))
 x =  np.linspace(-75e-6,75e-6,grid_size)
 step_xy = x[-1]-x[-2]
 X,Y = np.meshgrid(x,x)
-step = x[-1]-x[-2]
 flag = np.where((X>0)&(Y>0)&(X>=Y))
-
 zones = 100 #number of zones
 radius = np.zeros(zones)
 
@@ -145,7 +143,7 @@ for i in range(zones):
     if i%2 == 1 :
         r1 = radius[i-1]
         r2 = radius[i]
-        ring = make_quadrant(X,Y,flag,r1,r2,500)
+        ring = make_quadrant(X,Y,flag,r1,r2,step_xy,500)
         zp+=ring
 zp = repeat_pattern(X,Y,zp)
 
