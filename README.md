@@ -6,5 +6,6 @@ Codes for creating zone plate patterns and to study their performance. Effects o
 *simulate_zp.ipynb*  - performs multislice simulation to evaluate the performance of the zone plate. <br>
 *simulate_tilt.ipynb*- effects of tile on zone plate performance. <br>
 *prop.py*            - contains the code for fresnel propogation that will be used for multislice simulation. <br>
+*prop_utils.py*      - contains utilities that are usedful for multislice simulation. <br>
 
 Each file can be exported as a .py file and run !
