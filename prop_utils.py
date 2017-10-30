@@ -121,7 +121,9 @@ def propogate_through_object(wavefront_input,
     xray_object = str('place_holder_object')
     if 'xray_object' in kwargs :
         xray_object = kwargs['xray_object']
-        
+    if 'mode' in kwargs : 
+        mode = kwargs[mode]    
+      
     
     #pre object
     if d1 != 0 :
@@ -136,7 +138,7 @@ def propogate_through_object(wavefront_input,
     step_z = thickness/number_of_steps
     p = decide(step_z,step_xy,L,wavel)
     time.sleep(1)
-    if 'parallel' in kwargs : 
+    if mode == 'parallel':
         for i in range(number_of_steps):    
             wavefront = modify(wavefront,delta_slice,beta_slice,step_z,wavel)
             wavefront  = p(wavefront,step_xy,L,wavel,step_z)
