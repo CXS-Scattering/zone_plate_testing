@@ -123,7 +123,7 @@ def propogate_through_object(wavefront_input,
     if 'xray_object' in kwargs :
         xray_object = kwargs['xray_object']
     if 'mode' in kwargs : 
-        mode = kwargs[mode]    
+        mode = kwargs['mode']    
       
     
     #pre object
