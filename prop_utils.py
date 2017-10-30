@@ -119,6 +119,7 @@ def propogate_through_object(wavefront_input,
     
     wavefront = np.copy(wavefront_input)
     xray_object = str('place_holder_object')
+    mode = 'serial'
     if 'xray_object' in kwargs :
         xray_object = kwargs['xray_object']
     if 'mode' in kwargs : 
