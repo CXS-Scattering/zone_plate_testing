@@ -121,6 +121,7 @@ def propogate_through_object(wavefront_input,
     xray_object = str('place_holder_object')
     if 'xray_object' in kwargs :
         xray_object = kwargs['xray_object']
+        
     
     #pre object
     if d1 != 0 :
@@ -135,10 +136,15 @@ def propogate_through_object(wavefront_input,
     step_z = thickness/number_of_steps
     p = decide(step_z,step_xy,L,wavel)
     time.sleep(1)
-    for i in tqdm(range(number_of_steps),desc='Propogation through '+str(xray_object)+'...'):
-        wavefront = modify(wavefront,delta_slice,beta_slice,step_z,wavel)
-        wavefront  = p(wavefront,step_xy,L,wavel,step_z)
-    
+    if 'parallel' in kwargs : 
+        for i in range(number_of_steps):    
+            wavefront = modify(wavefront,delta_slice,beta_slice,step_z,wavel)
+            wavefront  = p(wavefront,step_xy,L,wavel,step_z)
+    else : 
+        for i in tqdm(range(number_of_steps),desc='Propogation through '+str(xray_object)+'...'):
+            wavefront = modify(wavefront,delta_slice,beta_slice,step_z,wavel)
+            wavefront  = p(wavefront,step_xy,L,wavel,step_z)
+
     #post object
     if d2 !=0 :
         step_z = d2
