@@ -1,5 +1,4 @@
 import numpy as np
-from skimage.restoration import unwrap_phase
 import prop
 import matplotlib.pyplot as plt
 import pickle
@@ -63,7 +62,7 @@ def plot_2d_complex(input_array,mode='linear',name='input_array',**kwargs):
             im1 = ax1.imshow(np.log((np.abs(input_array))),extent = kwargs['coords'])
         fig.colorbar(im1,ax = ax1)
         ax1.set_xlabel('axes in um')
-        im2 = ax2.imshow(unwrap_phase(np.angle(input_array)),extent = kwargs['coords'])
+        im2 = ax2.imshow((np.angle(input_array)),extent = kwargs['coords'])
         fig.subplots_adjust(right=1.75)
         ax2.set_xlabel('axes in um')
         fig.colorbar(im2,ax = ax2)
@@ -74,7 +73,7 @@ def plot_2d_complex(input_array,mode='linear',name='input_array',**kwargs):
             im1 = ax1.imshow(np.log((np.abs(input_array))))
         fig.colorbar(im1,ax = ax1)
         ax1.set_xlabel('axes in um')
-        im2 = ax2.imshow(unwrap_phase(np.angle(input_array)))
+        im2 = ax2.imshow((np.angle(input_array)))
         fig.subplots_adjust(right=1.75)
         ax2.set_xlabel('axes in um')
         fig.colorbar(im2,ax = ax2) 
