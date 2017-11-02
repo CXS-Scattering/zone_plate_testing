@@ -5,7 +5,6 @@ Codes for creating zone plate patterns and to study their performance. Effects o
 *create_zp.ipynb*    - creates a zone plate according to the input parameters. <br>
 *simulate_zp.ipynb*  - performs multislice simulation to evaluate the performance of the zone plate. <br>
 *simulate_tilt.ipynb*- effects of tile on zone plate performance. <br>
-*prop.py*            - contains the code for fresnel propogation that will be used for multislice simulation. <br>
-*prop_utils.py*      - contains utilities that are usedful for multislice simulation. <br>
 
+Dependencies :  uses the multislice module.
 Each file can be exported as a .py file and run !
