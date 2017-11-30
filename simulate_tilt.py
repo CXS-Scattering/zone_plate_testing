@@ -59,9 +59,9 @@ step_xy = parameters['step_xy']
 energy = parameters['energy(in eV)']
 wavel = parameters['wavelength in m']
 f = parameters['focal_length']
+thickness = parameters['thickness']
 L = step_xy*np.shape(zp)[0] 
 n = np.shape(zp)[0]         
-zp_thickness = 1e-6    
 print('all imports done')
 time.sleep(1)
 inputs = np.linspace(-1,1,50)
