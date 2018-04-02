@@ -1,6 +1,6 @@
 # zone_plate_testing
 
-### Codes for creating Fresnel zone plate patterns and to study their performance. Effects of tilting the zone plate can also be studied.
+### Workflow for creating Fresnel zone plate patterns and studying their performance. The input wavefront can be tilted to simulate the effect of zone plate misalignment.
 
 *create_rings.ipynb* : creates rings according to the input parameters. 
 
@@ -14,4 +14,4 @@
 The results from a test run for a zone plate with outermost zone width : 24 nm, radius : 12 um for a thickness of 2 um at 10 keV are shown.
 
 ### Dependencies 
-uses the [multislice](https://github.com/sajid-ali-nu/multislice/) module.
+Uses the [multislice](https://github.com/sajid-ali-nu/multislice/) module.
