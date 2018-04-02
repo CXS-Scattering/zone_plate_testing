@@ -1,13 +1,10 @@
 ## zone_plate_testing
 
-Codes for creating zone plate patterns and to study their performance. Effects of tilting the zone plate can also be studied.
+Codes for creating Fresnel zone plate patterns and to study their performance. Effects of tilting the zone plate can also be studied.
 
-*create_zp.ipynb*       - creates a zone plate according to the input parameters. <br>
-*create_rings.ipynb*    - creates rings according to the input parameters. <br>
-*simulate_zp.ipynb*     - performs multislice simulation to evaluate the performance of the zone plate. <br>
-*simulate_tilt.ipynb*   - effects of tile on zone plate performance. <br>
-*analyze_tilt.ipynb*    - analyze the effects of tile on zone plate performance. <br>
-*simulate_var_width_thickness.ipynb*   - effects of tile on zone plate performance for a various thicknesses and number of zones! <br>
+*create_rings.ipynb*              - creates rings according to the input parameters. <br>
+*simulate_zp_with_tilt.ipynb*     - performs multislice simulation to evaluate the performance of the zone plate with the option to tilt the input wave. <br>
+*simulate_var_width_thickness.py* - python script to test effects of tile on zone plate performance for a various thicknesses and number of zones. Essentially an extenstion of the jupyter notebook above. <br>
+*analyze_tilt.ipynb*              - analyze the results from running the above script. <br>
 
-Dependencies :  uses the multislice module.
-Each file can be exported as a .py file and run !
+Dependencies :  uses the [multislice](https://github.com/sajid-ali-nu/multislice/) module.
