@@ -1,6 +1,6 @@
-# zone_plate_testing
+## Zone Plate Testing
 
-### Workflow for creating Fresnel zone plate patterns and studying their performance. The input wavefront can be tilted to simulate the effect of zone plate misalignment.
+#### Workflow for creating Fresnel zone plate patterns and studying their performance. The input wavefront can be tilted to simulate the effect of zone plate misalignment.
 
 *create_rings.ipynb* : creates rings according to the input parameters. 
 
