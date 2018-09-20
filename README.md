@@ -1,8 +1,10 @@
 ## Zone Plate Testing
 
-##### Workflow for creating Fresnel zone plate patterns and studying their performance. The input wavefront can be tilted to simulate the effect of zone plate misalignment.
+Workflow for creating Fresnel zone plate patterns and studying their performance. The input wavefront can be tilted to simulate the effect of zone plate misalignment.
 
-`create_rings.ipynb` : creates rings according to the input parameters. 
+`create_rings.ipynb` : creates rings according to the input parameters.
+
+`create_rings.py` : python script that runs the same as above.
 
 `simulate_zp_with_tilt.ipynb` : performs multislice simulation to evaluate the performance of the zone plate with the option to tilt the input wave. 
 
@@ -15,3 +17,5 @@ The results from a test run for a zone plate with outermost zone width : 24 nm, 
 
 ### Dependencies 
 Uses the [multislice](https://github.com/sajid-ali-nu/multislice/) module.
+
+Works only with `joblib` < 0.11. 
