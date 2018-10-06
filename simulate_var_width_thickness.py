@@ -87,7 +87,7 @@ grid_size = parameters['grid_size']
 
 num_zones = np.array([250])
 thickness = np.array([2e-6])
-inputs = np.linspace(0,1,25)
+inputs = np.linspace(0,1,50)
 
 output_dir = up(os.getcwd())+str('/output/')
 os.mkdir(output_dir)
