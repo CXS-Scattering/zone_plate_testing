@@ -16,6 +16,8 @@ Workflow for creating Fresnel zone plate patterns and studying their performance
 The results from a test run for a zone plate with outermost zone width : 24 nm, radius : 12 um for a thickness of 2 um at 10 keV are shown.
 
 ### Dependencies 
-Uses the [multislice](https://github.com/sajid-ali-nu/multislice/) module.
+* Uses the [multislice](https://github.com/sajid-ali-nu/multislice/) module.
+* Works only with `joblib` < 0.11. 
 
-Works only with `joblib` < 0.11. 
+### Acknowledgements
+“We gratefully acknowledge the computing resources provided on Blues (and/or Bebop), a high-performance computing cluster operated by the Laboratory Computing Resource Center at Argonne National Laboratory.”
