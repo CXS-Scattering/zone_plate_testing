@@ -19,5 +19,8 @@ The results from a test run for a zone plate with outermost zone width : 24 nm, 
 * Uses the [multislice](https://github.com/sajid-ali-nu/multislice/) module.
 * Works only with `joblib` < 0.11. 
 
+### Caution
+The code retreives the refractive indices only for elements and not compounds. If one intends to use compounds then the delta and beta values need to be added manually. 
+
 ### Acknowledgements
 “We gratefully acknowledge the computing resources provided on Blues (and/or Bebop), a high-performance computing cluster operated by the Laboratory Computing Resource Center at Argonne National Laboratory.”
