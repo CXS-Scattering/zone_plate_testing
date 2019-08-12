@@ -1,24 +1,22 @@
-#!/usr/bin/env python
+
 # coding: utf-8
 
 # This script generates a zone plate pattern (based on partial filling) given the material, energy, grid size and number of zones as input
 
-# In[1]:
+# In[ ]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 from numba import njit
-from joblib import Parallel, delayed
-from tqdm import tqdm, trange
-
 import urllib,os,pickle
-from os.path import dirname as up
+from tqdm import tqdm, trange
+from joblib import Parallel, delayed
 
 
 # Importing all the required libraries. Numba is used to optimize functions.
 
-# In[2]:
+# In[ ]:
 
 
 def repeat_pattern(X,Y,Z):
@@ -39,7 +37,7 @@ def repeat_pattern(X,Y,Z):
 # * *Inputs* : X and Y grid denoting the coordinates and Z containing the pattern in one quadrant.
 # * *Outputs* : Z itself is modified to reflect the repition.
 
-# In[3]:
+# In[ ]:
 
 
 def get_property(mat,energy):
@@ -62,7 +60,7 @@ def get_property(mat,energy):
 # * *Inputs* : mat - material, energy - energy in eV
 # * *Outputs* : delta, beta
 
-# In[4]:
+# In[ ]:
 
 
 @njit   # equivalent to "jit(nopython=True)".
@@ -83,7 +81,7 @@ def partial_fill(x,y,step,r1,r2,n):
 # * *Inputs* : x,y - coordinates of the point, step - step size, r1,r2 - inner and outer radii of ring, n - resolution
 # * *Outputs* : fill_factor - value of the pixel based on amount of ring passing through it    
 
-# In[5]:
+# In[ ]:
 
 
 #find the radius of the nth zone
@@ -95,7 +93,7 @@ def zone_radius(n,f,wavel):
 # * *Inputs* : n - zone number, f - focal length, wavel - wavelength
 # * *Outputs* : radius of the zone as specified by the inputs
 
-# In[6]:
+# In[ ]:
 
 
 def make_quadrant(X,Y,flag,r1,r2,step,n,zone_number):
@@ -116,7 +114,7 @@ def make_quadrant(X,Y,flag,r1,r2,step,n,zone_number):
 # * *Inputs* : X,Y - grid, flag - specifies the quadrant to be filled (i.e. where X,Y>0), r1,r2 - inner and outer radii, n - parameter for the partial_fill function  
 # * *Outputs* : z - output pattern with one quadrant filled.
 
-# In[7]:
+# In[ ]:
 
 
 #2D ZP
@@ -138,12 +136,12 @@ def make_ring(i):
 # * *Inputs* : i-zone number,radius - array of radii ,X,Y - grid, flag - specifies the quadrant to be filled (i.e. where X,Y>0),n - parameter for the partial_fill function  
 # * *Outputs* : None. Saves the rings to memory. 
 
-# In[8]:
+# In[ ]:
 
 
 mat = 'Au'
 energy = 10000                     #Energy in EV
-f = 6.452e-3                       #focal length in meters 
+f = 6.452e-3          #focal length in meters 
 wavel = (1239.84/energy)*10**(-9)  #Wavelength in meters
 delta,beta = get_property(mat,energy)
 zones = 500 #number of zones
@@ -152,7 +150,7 @@ radius = np.zeros(zones)
 
 # Setting up the parameters and initializing the variables.
 
-# In[9]:
+# In[ ]:
 
 
 for k in range(zones):
@@ -161,9 +159,9 @@ for k in range(zones):
 
 # Filling the radius array with the radius of zones for later use in making the rings.
 
-# In the next few code blocks, we check if the parameters of the simulation make sense. First we print out the input and output pixel sizes assuming we will be using the 1FT propagator. Then we see if the pixel sizes are small enough compared to the outermost zone width. Finally we check if the focal spot can be contained for the given amount of tilt angle.
+# In the next few code blocks, we check if the parameters of the simulation make sense. First we print out the input and output pixel sizes assuming we will be using the IR propagator. Then we see if the pixel sizes are small enough compared to the outermost zone width. Finally we check if the focal spot can be contained for the given amount of tilt angle.
 
-# In[10]:
+# In[ ]:
 
 
 grid_size = 55296
@@ -176,7 +174,7 @@ print(' output pixel size(nm) : ',step_xy_output*1e9)
 print(' input pixel size(nm) : ',step_xy*1e9)
 
 
-# In[11]:
+# In[ ]:
 
 
 drn = radius[-1]-radius[-2]
@@ -184,7 +182,7 @@ print(' maximum radius(um) : ',radius[-1]*1e6)
 print(' outermost zone width(nm) :',drn*1e9)
 
 
-# In[12]:
+# In[ ]:
 
 
 print(' shift of focal spot in um : ',np.sin(1.25*(np.pi/180))*f*1e6)
@@ -193,7 +191,7 @@ if (L_out/2)*1e6 < np.sin(1.25*(np.pi/180))*f*1e6 :
     print(' WARNING not enough space to capture shift of focus!')
 
 
-# In[13]:
+# In[ ]:
 
 
 if step_xy > 0.25*drn :
@@ -220,10 +218,10 @@ zones_to_fill = np.array(zones_to_fill)
 
 
 try :
-    os.chdir(up(os.getcwd())+str('/hard_xray_zp'))
+    os.chdir(os.getcwd()+str('/rings'))
 except :
-    os.mkdir(up(os.getcwd())+str('/hard_xray_zp'))
-    os.chdir(up(os.getcwd())+str('/hard_xray_zp'))
+    os.mkdir(os.getcwd()+str('/rings'))
+    os.chdir(os.getcwd()+str('/rings'))
 
 
 # Store the location of each ring of the zone plate separately in a sub directory. This is more efficient than storing the whole zone plate array !
@@ -250,10 +248,11 @@ flag = np.where((X>0)&(Y>0)&(X>=Y))
 # In[ ]:
 
 
-get_ipython().run_cell_magic('capture', '', 'from joblib import Parallel, delayed \nresults = Parallel(n_jobs=6)(delayed(make_ring)(i) for i in zones_to_fill)')
+from joblib import Parallel, delayed 
+results = Parallel(n_jobs=5)(delayed(make_ring)(i) for i in zones_to_fill)
 
 
-# Creating the rings ! (Adjust the number of jobs depending on CPU cores.)
+# Creating the rings !
 
 # In[ ]:
 
