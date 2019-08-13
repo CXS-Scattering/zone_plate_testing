@@ -143,10 +143,10 @@ def make_ring(i):
 
 mat = 'Au'
 energy = 10000                     #Energy in EV
-f = 6.452e-3                       #focal length in meters 
+f = 10e-3                       #focal length in meters 
 wavel = (1239.84/energy)*10**(-9)  #Wavelength in meters
 delta,beta = get_property(mat,energy)
-zones = 500 #number of zones
+zones = 700 #number of zones
 radius = np.zeros(zones)
 
 
@@ -167,7 +167,7 @@ for k in range(zones):
 
 
 grid_size = 55296
-input_xrange = 156e-6
+input_xrange = 262e-6
 step_xy = input_xrange/grid_size
 L_out = (1239.84/energy)*10**(-9)*f/(input_xrange/grid_size)
 step_xy_output = L_out/grid_size
@@ -187,10 +187,14 @@ print(' outermost zone width(nm) :',drn*1e9)
 # In[12]:
 
 
-print(' shift of focal spot in um : ',np.sin(1.25*(np.pi/180))*f*1e6)
 print(' max shift of focal spot(um) : ',(L_out/2)*1e6)
-if (L_out/2)*1e6 < np.sin(1.25*(np.pi/180))*f*1e6 :
-    print(' WARNING not enough space to capture shift of focus!')
+
+# invert the following to get max tilt allowance
+# after which the focal spot falls of the 
+# simulation plane
+# np.sin(theta*(np.pi/180))*f = (L_out/2)
+theta_max = np.arcsin((L_out/2)*(1/f))*(180/np.pi)
+print(' max wavefield aligned tilt(deg) : ',theta_max)
 
 
 # In[13]:
@@ -204,7 +208,7 @@ if step_xy_output > 0.25*drn :
     print(' ratio of output step size to outermost zone width', step_xy_output/drn)
 
 
-# In[ ]:
+# In[14]:
 
 
 zones_to_fill = []
@@ -250,7 +254,7 @@ flag = np.where((X>0)&(Y>0)&(X>=Y))
 # In[ ]:
 
 
-get_ipython().run_cell_magic('capture', '', 'from joblib import Parallel, delayed \nresults = Parallel(n_jobs=6)(delayed(make_ring)(i) for i in zones_to_fill)')
+get_ipython().run_cell_magic('capture', '', 'from joblib import Parallel, delayed \nresults = Parallel(n_jobs=5)(delayed(make_ring)(i) for i in zones_to_fill)')
 
 
 # Creating the rings ! (Adjust the number of jobs depending on CPU cores.)

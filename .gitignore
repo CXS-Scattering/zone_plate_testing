@@ -1,0 +1,14 @@
+# Ignore any HDF5 files
+# Ignore any npy files
+# These contain the data to make
+# the zone plates. 
+**.h5
+**.npy
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+ipython_config.py
+
+
