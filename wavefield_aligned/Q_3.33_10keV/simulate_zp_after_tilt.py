@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import pickle,os
 from multislice import prop,prop_utils
 from os.path import dirname as up
-from tqdm import tqdm_notebook
+from tqdm import trange
 import h5py,sys
 
 # This file accepts one input parameter : the angle
@@ -43,7 +43,7 @@ if __name__=="__main__":
     delta = parameters['delta']
     step_xy = parameters['step_xy']
     wavel = parameters['wavelength in m']
-    f = parameters['focal_length']
+    focal_length = parameters['focal_length']
     L = step_xy*grid_size
     
     os.chdir(pwd)
@@ -85,7 +85,7 @@ if __name__=="__main__":
 
     # Main multi-slice loop. Extract pattern at 
     # each slice. Propagate until exit plane.
-    for i in tqdm_notebook(range(number_of_steps)):
+    for i in trange(number_of_steps):
         pattern = get_pattern(i)
         wavefront = prop_utils.modify_two_materials_case_2(wavefront,step_z,wavel,
                                                 pattern,delta,beta,
@@ -96,7 +96,7 @@ if __name__=="__main__":
     del wavefront
 
     # Propagate to focus.
-    step_z = f - (number_of_steps*step_z)/2
+    step_z = focal_length - (number_of_steps*step_z)/2
     p = prop_utils.decide(step_z,step_xy,L,wavel)
     print('Propagation to focal plane')
     print('Fresnel Number :',((L**2)/(wavel*step_z)))
@@ -110,6 +110,3 @@ if __name__=="__main__":
     np.save('foc_spot_Q_3.33_'+str(round(angle,3))+'_degree.npy',focal_spot)
     np.save('foc_loc_Q_3.33_'+str(round(angle,3))+'_degree.npy',np.array([x_,y_]))
     
-
-
-
