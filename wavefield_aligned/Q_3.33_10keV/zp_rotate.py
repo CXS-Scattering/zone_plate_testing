@@ -30,7 +30,8 @@ if __name__=="__main__":
     angle = float(sys.argv[1])*0.1
     print(angle)
 
-    # Load the pyvips conversion dictionary.
+    # Load the pyvips conversion dictionary and 
+    # conversion function.
     get_ipython().run_line_magic('run', 'pyvips_dict.py')
 
     # Load the reduced zone plate pattern.
