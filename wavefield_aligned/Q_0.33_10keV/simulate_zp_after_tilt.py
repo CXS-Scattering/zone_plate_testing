@@ -107,6 +107,6 @@ if __name__=="__main__":
     focal_spot_size = 250
     focal_spot,x_,y_,max_val = prop_utils.get_focal_spot(wave_focus,grid_size,focal_spot_size)
 
-    np.save('foc_spot_Q_3.33_'+str(round(angle,3))+'_degree.npy',focal_spot)
-    np.save('foc_loc_Q_3.33_'+str(round(angle,3))+'_degree.npy',np.array([x_,y_]))
+    np.save('foc_spot_Q_0.33_'+str(round(angle,3))+'_degree.npy',focal_spot)
+    np.save('foc_loc_Q_0.33_'+str(round(angle,3))+'_degree.npy',np.array([x_,y_]))
     
