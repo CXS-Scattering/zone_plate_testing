@@ -23,7 +23,7 @@ import h5py,sys
 if __name__=="__main__":
 
     # Read the input arguments and set rotation angle. 
-    angle = float(sys.argv[1])*0.001
+    angle = float(sys.argv[1])*0.1
     print(angle)
 
     # Read the relevant parameters saved when the 
@@ -107,6 +107,6 @@ if __name__=="__main__":
     focal_spot_size = 250
     focal_spot,x_,y_,max_val = prop_utils.get_focal_spot(wave_focus,grid_size,focal_spot_size)
 
-    np.save('foc_spot_Q_3.33_'+str(round(angle,3))+'_degree.npy',focal_spot)
-    np.save('foc_loc_Q_3.33_'+str(round(angle,3))+'_degree.npy',np.array([x_,y_]))
+    np.save('foc_spot_Q_10_'+str(round(angle,3))+'_degree.npy',focal_spot)
+    np.save('foc_loc_Q_10_'+str(round(angle,3))+'_degree.npy',np.array([x_,y_]))
     

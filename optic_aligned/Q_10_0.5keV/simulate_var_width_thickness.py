@@ -63,8 +63,8 @@ def tilt(i,zp,thickness,parameters):
     wave_focus,L2 = prop_utils.optic_illumination(wave_in,zp,delta,beta,zp_thickness,step_xy,wavel,number_of_steps_zp,0,f)
     focal_spot,x_,y_,max_val = prop_utils.get_focal_spot(wave_focus,grid_size)
     
-    np.save('foc_spot_Q_3.33_'+str(round(angle,3))+'_degree.npy',focal_spot)
-    np.save('foc_loc_Q_3.33_'+str(round(angle,3))+'_degree.npy',np.array([x_,y_]))
+    np.save('foc_spot_Q_10_'+str(round(angle,3))+'_degree.npy',focal_spot)
+    np.save('foc_loc_Q_10_'+str(round(angle,3))+'_degree.npy',np.array([x_,y_]))
     
     return
 
@@ -80,7 +80,7 @@ num_zones = 700
 zp =  make_zp_from_rings(num_zones,grid_size)
 os.chdir(pwd)
 
-thickness = 0.3807e-6 #Q=3.333
+thickness = 1.14208e-6 #Q=10
 inputs = np.arange(51)*0.1
 
 

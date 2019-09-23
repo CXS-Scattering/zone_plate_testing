@@ -27,7 +27,7 @@ def expand(j,loc,A,B):
 if __name__=="__main__":
     
     # Read the input arguments and set rotation angle. 
-    angle = float(sys.argv[1])*0.001
+    angle = float(sys.argv[1])*0.1
     print(angle)
 
     # Load the pyvips conversion dictionary and 
