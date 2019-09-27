@@ -1,8 +1,8 @@
 ## Zone Plate Testing
 
-#### Currently refactoring code. Check back in a few weeks.
+Workflow for creating Fresnel zone plate patterns and simulating the effects of tilt misalignment.
 
-Workflow for creating Fresnel zone plate patterns and studying their performance. Simulations of zone plate tilt misalignment.
+#### Currently refactoring code. Check back in a few weeks.
 
 `create_rings.ipynb` : creates rings according to the input parameters.
 
@@ -16,6 +16,3 @@ Workflow for creating Fresnel zone plate patterns and studying their performance
 
 ### Caution
 The code retreives the refractive indices only for elements and not compounds. If one intends to use compounds then the delta and beta values need to be added manually. 
-
-### Acknowledgements
-“We gratefully acknowledge the computing resources provided on Blues (and/or Bebop), a high-performance computing cluster operated by the Laboratory Computing Resource Center at Argonne National Laboratory.”
