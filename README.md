@@ -1,18 +1,8 @@
 ## Zone Plate Testing
 
-Workflow for creating Fresnel zone plate patterns and simulating the effects of tilt misalignment.
+Codes and workflow for creating Fresnel zone plate patterns and simulating the effects of tilt misalignment. This repository contains all the code to produce plots for a manusciprt currently in preparation. Refer to the manuscript for detailed explanations of the algorithms used. 
 
-#### Currently refactoring code. Check back in a few weeks.
-
-`create_rings.ipynb` : creates rings according to the input parameters.
-
-`create_rings.py` : python script that runs the same as above.
-
-`simulate_zp_with_tilt.ipynb` : performs multislice simulation to evaluate the performance of the zone plate with the option to tilt the input wave. 
-
-`simulate_var_width_thickness.py` : python script to test effects of tile on zone plate performance for a various thicknesses and number of zones. Essentially an extenstion of the jupyter notebook above. 
-
-`analyze_tilt.ipynb`              : analyze the results from running the above script. 
-
-### Caution
-The code retreives the refractive indices only for elements and not compounds. If one intends to use compounds then the delta and beta values need to be added manually. 
+### Contents:
+[Code to generate zone plate patterns](https://github.com/s-sajid-ali/zone_plate_testing/wiki/Generating-zone-plate-patterns)
+[Optic algined simulations of tilt misalignment](https://github.com/s-sajid-ali/zone_plate_testing/wiki/Optic-aliged-approach)
+[Wavefield algined simulations of tilt misalignment](https://github.com/s-sajid-ali/zone_plate_testing/wiki/Wavefiled-aligned-approach)
