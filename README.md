@@ -8,4 +8,4 @@ Codes and workflow for creating Fresnel zone plate patterns and simulating the e
 * [Wavefield algined simulations of tilt misalignment](https://github.com/s-sajid-ali/zone_plate_testing/wiki/Wavefiled-aligned-approach)
 
 
-A conda [environment file](https://github.com/s-sajid-ali/zone_plate_testing/blob/master/ipy3.yml) is included to ensure reproducibility of results. 
+A conda [environment file](https://github.com/s-sajid-ali/zone_plate_testing/blob/main/ipy3.yml) is included to ensure reproducibility of results. 
